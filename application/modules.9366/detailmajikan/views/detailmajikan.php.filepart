@@ -1,0 +1,1556 @@
+<style type="text/css">
+    #satu{
+        display: block;
+        width: 95%;
+        padding: 5px;
+    }
+
+
+.modal-body label, .modal-body > input{
+    padding: 15px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.inline-block{
+    width: auto;
+    min-width: 100px;
+    display: inline-block;
+    margin: 10px; 
+}
+
+
+</style>
+<div class='row-fluid'>
+    <div class='span12'>
+        <div class='page-header'>
+            <h1 class='pull-left'>
+                <i class='icon-star'></i>
+                <span>Detail Personal </span>
+            </h1>
+            <div class='pull-right'>
+                <ul class='breadcrumb'>
+                    <li>
+                        <a href="<?php echo site_url().'/dashboard'; ?>"><i class='icon-bar-chart'></i>
+                        </a>
+                    </li>
+                    <li class='separator'>
+                        <i class='icon-angle-right'></i>
+                    </li>
+                    <li class='active'>Detail Personal </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>  
+
+                           
+
+<div class="row-fluid">
+
+
+            <div class='span12 box bordered-box blue-border' style='margin-bottom:0;'>
+                            <div class='box-header blue-background'>
+            <div class='title'>Detail Majikan</div>
+            <div class='actions'>
+                <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
+                </a>
+                <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                </a>
+            </div>
+        </div>
+                            <div class='box-content box-no-padding'>
+                                 <?php foreach ($tampil_data_personal as $row) { ?>
+                                <div class="span3">
+                                    <div class="text-center profile-pic"><img src="<?php echo base_url(); ?>assets/uploads/<?php echo "".$row->foto ?>" alt="" /></div>
+                                     <?php 
+                        $this->load->view('template/menuadministrasi');
+                    ?>
+                                </div>
+
+                                <div class="span6">
+                                <?php if($row->skill1==""){?>
+                                    <h4><?php echo $row->nama;?> <br /><small><?php echo "".$detailpersonalid."".$row->negara1."".$row->negara2."".$row->calling."".$row->skill1."".$row->skill2."".$row->skill3; ?></small></h4>
+                                    <?php }else{?>
+                                    <h4><?php echo $row->nama;?> <br /><small><?php echo "".$detailpersonalid."".$row->negara1."".$row->negara2."".$row->calling."-".$row->skill1."".$row->skill2."".$row->skill3; ?></small></h4>
+                                    <?php }?>  
+
+                                       <div class='row-fluid'>
+    <div class='span12 box box-transparent'>
+        <div class='row-fluid'>
+           <div class='span4 box-quick-link green-background'>
+                <a href='<?php echo site_url().'/upload_pk'; ?>'>
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'><b>Upload PK</b></div>
+                     <div class='content'><b>0 DOKUMEN</b></div>
+                </a>
+            </div>
+             <div class='span4 box-quick-link orange-background'>
+                <a href='<?php echo site_url().'/upload_suhan'; ?>'>
+                    <div class='header'>
+                        <div class='icon-briefcase'></div>
+                    </div>
+                    <div class='content'><b>Upload SUHAN</b></div>
+                     <div class='content'><b>0 DOKUMEN</b></div>
+                </a>
+            </div>
+            <div class='span4 box-quick-link purple-background'>
+                <a href='<?php echo site_url().'/upload_visapermit'; ?>'>
+                    <div class='header'>
+                        <div class='icon-globe'></div>
+                    </div>
+                    <div class='content'><b>Upload Visa Permit</b></div>
+                     <div class='content'><b>0 DOKUMEN</b></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+                                         <div class='row-fluid'>
+
+     <div class='span12 box box-transparent'>
+        <div class='row-fluid'>
+           <div class='span4 box-quick-link green-background'>
+                <a href='<?php echo site_url().'/upload_kpapra'; ?>'>
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'><b>Upload JD</b></div>
+                     <div class='content'><b>0 DOKUMEN</b></div>
+                </a>
+            </div>
+
+            <div class='span4 box-quick-link green-background'>
+                <a onclick="tglpkketaiwan('<?= $detailpersonalid; ?>')">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'><b>TGL PK KE TAIWAN</b></div>
+                </a>
+            </div>
+        </div>
+    </div>
+ </div>
+
+                              <?php }
+                                     $stts = substr($detailpersonalid, 0, 2);
+
+                                 if($hitungmajikan==0){
+                                ?>
+<div class="alert alert-info">
+                        
+                        <button data-dismiss="alert" class="close"> x </button> Silahkan menambahkan data pada tombol ini... 
+<?php                        if($stts == 'FI' ||$stts == 'MI'){ ?>
+                         <a class='btn btn-info btn-large' data-toggle='modal' href='#tambah' role='button'>Tambah Data</a>
+                         <?php } else {?>
+                        <a class='btn btn-info btn-large' data-toggle='modal' href='#tambah' role='button'>Tambah Data</a>
+                         <?php }?>
+                        </div>
+                                 <?php
+                                }else{ ?>
+
+                                <div class="alert alert-info ">
+                        
+                        <button data-dismiss="alert" class="close"> x </button> silahkan mengubah data pada tombol ini... 
+                        </br>
+                      <!--    <a class='btn btn-info btn-medium' data-toggle='modal' href='#ubah' role='button'>Ubah Data</a>
+                         <a href="<?php echo site_url('detailmajikan/vubahmajikan/'.$detailpersonalid); ?>"class="btn btn-info btn-medium"></i>Edit Grup Majikan</a>
+                        </div> -->
+
+                        <?php                        if($stts == 'FI' ||$stts == 'MI'){ ?>
+                         <a class='btn btn-info btn-medium' data-toggle='modal' href='#ubah' role='button'>Ubah Data</a>
+                         <a href="<?php echo site_url('detailmajikan/vubahmajikan/'.$detailpersonalid); ?>"class="btn btn-info btn-medium"></i>Edit Grup Majikan</a>
+
+                         <?php } else {?>
+                         <a class='btn btn-info btn-medium' data-toggle='modal' href='#ubah' role='button'>Ubah Data</a>
+                         <a href="<?php echo site_url('detailmajikan/vubahmajikanformal/'.$detailpersonalid); ?>"class="btn btn-info btn-medium"></i>Edit Grup Majikan</a>
+                         <?php }?>
+                        </div>
+                            
+
+                             <?php 
+if($stts == 'FI' ||$stts == 'MI'){ 
+foreach ($tampil_data_majikanfi as $row) { 
+                         ?>
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td class="span3"> Nama Group :</td>
+                                                <td> <?php echo  $row->namagroupnya;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> Kode Agen :</td>
+                                                <td> <?php echo $row->namaagennya;?> </td>
+                                            </tr>
+                                            
+                                             <tr>
+                                                <td class="span3"> Nama Majikan :</td>
+                                                <td> <?php echo $row->namamajikan;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> Nama Majikan (taiwan) :</td>
+                                                <td> <?php echo $row->namataiwan;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> Bandara Tujuan :</td>
+                                                <td> <?php echo $row->bandaratuju;?> </td>
+                                            </tr>
+                                              <tr>
+                                                <td class="span3"> No Telp Majikan :</td>
+                                                <td> <?php echo $row->notelpmajikan;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> Alamat Majikan :</td>
+                                                <td> <?php echo $row->alamatmajikan;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> Tanggal Terima PK:</td>
+                                                <td> <?php echo $row->tglpk;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> No Suhan :</td>
+                                                <td> <?php echo $row->id_suhan;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> tgl terbit suhan :</td>
+                                                <td> <?php echo $row->tglterbitsuhan;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> tgl terima suhan :</td>
+                                                <td> <?php echo $row->tglterimasuhan;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> Keterangan suhan :</td>
+                                                <td> <?php echo $row->ketsuhan;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3">No Visa Permit :</td>
+                                                <td> <?php echo $row->id_visapermit;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> tgl terbit Visa Permit :</td>
+                                                <td> <?php echo $row->tglterbitpermit;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> tgl terima Visa Permit :</td>
+                                                <td> <?php echo $row->tglterimapermit;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> Keterangan Visa Permit :</td>
+                                                <td> <?php echo $row->ketpermit;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3">Tanggal Terpilih :</td>
+                                                <td> <?php echo $row->tglterpilih;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> JD :</td>
+                                                <td> <?php echo $row->JD;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> Tanggal Terbang :</td>
+                                                <td> <?php echo $row->tglterbang;
+                                                $hasil3= $row->statustglterbang;
+
+                                                        if($hasil3=='A'){
+                                                            // echo " A(Actual)";
+
+                                                        }else{
+                                                             // echo " C(Calculation)";
+                                                        }?> </td>
+                                            </tr>
+
+                                             <tr>
+                                                <td class="span2"></td>
+                                                <td> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                 <?php   }
+                             }
+                         else{
+                            foreach ($tampil_data_majikanformal as $rowformal) { 
+                         ?>
+                                <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td class="span3"> Nama Group :</td>
+                                                <td> <?php echo $rowformal->namagroup1;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> Nama Agen :</td>
+                                                <td> <?php echo $rowformal->namaagen1;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> Nama Majikan :</td>
+                                                <td> <?php echo $rowformal->namamajikan1;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> Bandara Tujuan :</td>
+                                                <td> <?php echo $rowformal->bandaratuju;?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="span3"> NO Suhan :</td>
+                                                <td> <?php echo $rowformal->nosuhan1;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> NO VisaPermit :</td>
+                                                <td> <?php echo $rowformal->novisapermit1;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3">Tanggal Terpilih :</td>
+                                                <td> <?php echo $rowformal->tglterpilih;?> </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="span3"> Tanggal Terima Suhan:</td>
+                                                <td> <?php echo $rowformal->tglsimpansuhan;?> </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="span3"> Stat Dokumen Suhan:</td>
+                                                <td> <?php echo $rowformal->statsuhan;?> </td>
+                                            </tr>
+
+                                             <tr>
+                                                <td class="span3"> Tanggal Terima Visapermit:</td>
+                                                <td> <?php echo $rowformal->tglsimpanvp;?> </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="span3"> Stat Dokumen Visa Permit:</td>
+                                                <td> <?php echo $rowformal->statvp;?> </td>
+                                            </tr>
+
+
+                                              <tr>
+                                                <td class="span3"> Tanggal Terima PK:</td>
+                                                <td> <?php echo $rowformal->tglpk;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> JD :</td>
+                                                <td> <?php echo $rowformal->JD;?> </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="span3"> Tanggal Terbang :</td>
+                                                <td> <?php echo $rowformal->tglterbang;?> </td>
+                                            </tr>
+                                           
+                                             <tr>
+                                                <td class="span2"></td>
+                                                <td> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                       <?php }
+                   }
+               }?>
+        </div>
+         <div class='span3 box box-transparent'>
+                <br>
+                 <br>
+                  <br>
+                      <h4>PRINT DOKUMEN </h4>
+        <div class='row-fluid'>
+            <div class=' box-quick-link blue-background'>
+                <a target='_blank' href='<?php echo site_url().'/tambah1/cetakbaru/'.$detailpersonalid; ?>'>
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>DL005. PERJANJIAN KERJA</div>
+                </a>
+            </div>
+
+            <br>
+
+            <div class=' box-quick-link blue-background'>
+                <a target='_blank' class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>Print Apendik</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+
+
+                    
+          <div class='modal hide fade' id='tambah' role='dialog' tabindex='-1'>
+                <div class='modal-header'>
+                    <button class='close' data-dismiss='modal' type='button'>&times;</button>
+                    <h3>Tambah Majikan</h3>
+                </div>
+              <div class='modal-body'>
+  <form action="<?php echo site_url('detailmajikan/tambahmajikan');?>" enctype="multipart/form-data" method="post" class="form-horizontal" />
+
+<input type="text" id="idbiodata" name="idbiodata" value="<?php echo "".$detailpersonalid ?>" class="hidden" />
+
+
+                                                            <?php $status = substr($detailpersonalid, 0, 2);
+                                                            if($status == 'FI'){ ?>
+
+                                            <div class="control-group" id="jelasin_agen">
+                                                <div class="controls">
+                                                <label class="control-label"> Pilih Group </label>
+                                                    <select class="form-control" name="group" id="group">
+                                                        <?php foreach ($tampil_data_group as $key => $datagroup) :?>
+                                                          <option value="<?= $datagroup->id_group; ?>"><?= $datagroup->nama; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div id="load" style="display:none"><img src="<?php echo base_url(); ?>assets/assets/pre-loader/Whirlpool.gif" alt="Whirlpool" /></div>
+                                             </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                         <label class="control-label">Pilih Agen </label>
+                                         <div class="controls">
+                                         <select class="form-control" name="kodeagen" id="kodeagen">
+                                            
+                                         </select>
+                                         </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih Majikan</label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="kode_majikan" id="kode_majikan">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih No Suhan </label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="id_suhan" id="id_suhan">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih No Visa Permit </label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="id_visapermit" id="id_visapermit">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+
+
+                                
+                                           </div>
+                                                                                                      <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima PK </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="tglpk"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terpilih Majikan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terpilih"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+   <div class="control-group">
+                                                            <label class="control-label "> Nama Majikan  </label>
+                                                            <div class="controls">
+                                                                <input type="text" name="namamajikan" class=" popovers" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Nama Majikan (taiwan)</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="namataiwan" class=" popovers" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group">
+                                                              <label class="control-label "> Bandara Tujuan</label>
+                                                              <div class="controls">
+                                                                  <input type="text" name="bandaratuju" class=" popovers" value="" data-trigger="hover" data-content="" data-original-title="bandaratuju" />
+                                                              </div>
+                                                            </div>
+
+                                                            <div class="control-group">
+                                                            <label class="control-label "> No Telp Majikan</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="notelpmajikan" class=" popovers" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Alamat Majikan</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="alamatmajikan" class=" popovers" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Suhan </label>
+                                                            <div class="controls">
+                                                                <input type="text" name="suhan" class=" popovers" data-trigger="hover" data-content="" data-original-title="Suhan" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terbit Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="tglterbitsuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="tglterimasuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Keterangan Suhan</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="ketsuhan" class=" popovers" data-trigger="hover" data-content="" data-original-title="Visa Permit" />
+                                                            </div>
+                                                            </div>
+
+                                                            
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Visa Permit </label>
+                                                            <div class="controls">
+                                                                <input type="text" name="visapermit" class=" popovers" data-trigger="hover" data-content="" data-original-title="Visa Permit" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terbit Visa Permit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="tglterbitpermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima Visa Permit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="tglterimapermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Keterangan Visa Permit</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="ketpermit" class=" popovers" data-trigger="hover" data-content="" data-original-title="Visa Permit" />
+                                                            </div>
+                                                            </div>
+
+                                                            
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Dapat Job Deskripsi (JD) </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="jd"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Diminta Terbang </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terbang"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                            <!--     <label class='radio '>
+                                                                            <input type='radio' name="terbanga" value='A' />
+                                                                            Actual
+                                                                        </label>
+                                                                        <label class='radio'>
+                                                                            <input type='radio' name="terbanga" value='C' checked />
+                                                                            Calculation
+                                                                        </label> -->
+                                                                </div>
+                                                            </div>
+
+                                                            <?php }else{?>
+
+                                            
+                                            <div class="control-group" id="jelasin_agen">
+                                                <div class="controls">
+                                                <label class="control-label"> Pilih Group </label>
+                                                    <select class="form-control" name="group" id="group">
+                                                        <?php foreach ($tampil_data_group as $key => $datagroup) :?>
+                                                          <option value="<?= $datagroup->id_group; ?>"><?= $datagroup->nama; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div id="load" style="display:none"><img src="<?php echo base_url(); ?>assets/assets/pre-loader/Whirlpool.gif" alt="Whirlpool" /></div>
+                                             </div>
+
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih Agen </label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="kodeagen" id="kodeagen">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih Majikan</label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="kode_majikan" id="kode_majikan">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih No Suhan </label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="id_suhan" id="id_suhan">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+
+                                         <div class="control-group" id="jelasin_agen">
+                                             <label class="control-label">Pilih No Visa Permit </label>
+                                             <div class="controls">
+
+                                                 <select class="form-control" name="id_visapermit" id="id_visapermit">
+                                                    
+                                                 </select>
+
+                                             </div>
+                                         </div>
+<!-- 
+                                                            <div class="control-group">
+                                                                <label class="control-label"> Pilih Majikan </label>
+                                                                <div class="controls">
+                                                                   <?php   echo form_dropdown("id_majikannya",$option_posisi,"","id='id_majikan'"); ?>
+                                                            <div id="load" style="display:none"><img src="<?php echo base_url(); ?>assets/assets/pre-loader/Whirlpool.gif" alt="Whirlpool" /></div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div id="suhanin">
+                                                             <div class="control-group" id="suhanin">
+                                                                <label class="control-label"> Pilih SUhan </label>
+                                                                <div class="controls">
+                                                                   <?php    echo form_dropdown("id_suhan",array('Pilih Suhan'=>'Pilih Majikan Terlebih dahulu'),'','disabled'); ?>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="suhanin">
+                                                                <label class="control-label"> Pilih Visa Permit </label>
+                                                                <div class="controls">
+                                                                   <?php    echo form_dropdown("id_visapermit",array('Pilih Suhan'=>'Pilih Majikan Terlebih dahulu'),'','disabled'); ?>
+                                                                </div>
+                                                            </div>
+                                                            </div> -->
+
+                                                           <!--   <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terpilih Majikan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terpilih"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                     -->
+                                                      <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terpilih Majikan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terpilih"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                     <!-- <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="simpansuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>    
+                                                              <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Kirim Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="kirimsuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>    
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima Visapermit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="simpanvisapermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>    
+                                                              <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Kirim Visapermit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="kirimvisapermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>     -->
+
+
+                                                      <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima PK </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="tglpk"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                           
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Dapat Job Deskripsi (JD) </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="jd"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Diminta Terbang </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terbang"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                        <!--         <label class='radio '>
+                                                                            <input type='radio' name="terbanga" value='A' />
+                                                                            Actual
+                                                                        </label>
+                                                                        <label class='radio'>
+                                                                            <input type='radio' name="terbanga" value='C' checked />
+                                                                            Calculation
+                                                                        </label> -->
+                                                                </div>
+                                                            </div>
+         <?php
+     }?>
+                                                   
+                </div>
+                <div class='modal-footer'>
+                    <button class='btn' data-dismiss='modal'>Close</button>
+                    <button class='btn btn-primary'>Save changes</button>
+                </div>
+                     </form>
+            </div>
+
+                      <div class='modal hide fade' id='ubah' role='dialog' tabindex='-1'>
+                <div class='modal-header'>
+                    <button class='close' data-dismiss='modal' type='button'>&times;</button>
+                    <h3>Ubah Data</h3>
+                </div>
+                <div class='modal-body'>
+  <form action="<?php echo site_url('detailmajikan/ubahmajikan');?>" enctype="multipart/form-data" method="post" class="form-horizontal" />
+                                                           <input type="text" id="idbiodata" name="idbiodata" value="<?php echo "".$detailpersonalid ?>" class="hidden" />
+
+                                                             <?php $status = substr($detailpersonalid, 0, 2);
+    if($status == 'FI'||$status == 'MI'){ ?>
+                         <?php foreach ($tampil_data_majikanfi as $row2) { ?>
+
+  
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima PK </label>
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value="<?php echo  $row->tglpk;?>" name="tglpk"  placeholder='Select datepicker' type='text' />
+                                                                    </div>
+                                                                       <span class='add-on'>
+                                                                            <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                       </span>
+                                                            </div>
+
+
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Nama Majikan  </label>
+                                                            <div class="controls">
+                                                                <input type="text" name="namamajikan" class=" popovers" value="<?php echo  $row->namamajikan;?>" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Nama Majikan (taiwan)</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="namataiwan" class=" popovers" value="<?php echo  $row->namataiwan;?>" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group">
+                                                              <label class="control-label "> Bandara Tujuan</label>
+                                                              <div class="controls">
+                                                                  <input type="text" name="bandaratuju" class=" popovers" value="<?php echo  $row->bandaratuju;?>" data-trigger="hover" data-content="" data-original-title="bandaratuju" />
+                                                              </div>
+                                                            </div>
+
+                                                            <div class="control-group">
+                                                            <label class="control-label "> No Telp Majikan</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="notelpmajikan" class=" popovers" value="<?php echo  $row->notelpmajikan;?>" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Alamat Majikan</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="alamatmajikan" class=" popovers" value="<?php echo  $row->alamatmajikan;?>" data-trigger="hover" data-content="" data-original-title="namamajikan" />
+                                                            </div>
+                                                            </div>
+
+
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Suhan </label>
+                                                            <div class="controls">
+                                                                <input type="text" name="suhan" class=" popovers" value="<?php echo  $row->id_suhan;?>" data-trigger="hover" data-content="" data-original-title="Suhan" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terbit Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value="<?php echo  $row->tglterbitsuhan;?>" name="tglterbitsuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd'  value="<?php echo  $row->tglterimasuhan;?>" name="tglterimasuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                              <div class="control-group">
+                                                            <label class="control-label "> Keterangan Suhan</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="ketsuhan" class=" popovers" data-trigger="hover" data-content="" data-original-title="Visa Permit" value="<?php echo  $row->ketsuhan;?>" />
+                                                            </div>
+                                                            </div>
+
+
+                                                            
+                                                            <div class="control-group">
+                                                            <label class="control-label "> Visa Permit </label>
+                                                            <div class="controls">
+                                                                <input type="text" name="visapermit" class=" popovers" value="<?php echo  $row->id_visapermit;?>" data-trigger="hover" data-content="" data-original-title="Visa Permit" />
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terbit Visa Permit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value="<?php echo  $row->tglterbitpermit;?>" name="tglterbitpermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima Visa Permit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value="<?php echo  $row->tglterimapermit;?>" name="tglterimapermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                              <div class="control-group">
+                                                            <label class="control-label "> Keterangan Visa Permit</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="ketpermit" class=" popovers" data-trigger="hover" data-content="" data-original-title="Visa Permit" value="<?php echo  $row->ketpermit;?>"/>
+                                                            </div>
+                                                            </div>
+
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terpilih Majikan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terpilih"  placeholder='Select datepicker' type='text' value="<?php echo  $row->tglterpilih;?>"/>
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Dapat Job Deskripsi (JD) </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="jd"  placeholder='Select datepicker' type='text' value="<?php echo  $row->JD;?>"/>
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Diminta Terbang </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terbang"  placeholder='Select datepicker' type='text' value="<?php echo  $row->tglterbang;?>"/>
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                              <!--  <?php $tgla= $row->statustglterbang;
+                                                        if($tgla=='A'){
+                                                            ?>
+                                                                            <label class='radio '>
+                                                                            <input type='radio' name="terbanga" value='A' checked />
+                                                                            Actual
+                                                                        </label>
+                                                                        <label class='radio'>
+                                                                            <input type='radio' name="terbanga" value='C'  />
+                                                                            Calculation
+                                                                        </label>
+                                                             <?php
+                                                        }else{
+                                                            ?>
+                                                            <label class='radio '>
+                                                                            <input type='radio' name="terbanga" value='A'  />
+                                                                            Actual
+                                                                        </label>
+                                                                        <label class='radio'>
+                                                                            <input type='radio' name="terbanga" value='C'  checked/>
+                                                                            Calculation
+                                                                        </label>
+                                                             <?php
+                                                        }?> -->
+                                                                </div>
+                                                            </div>
+                                                            <?php }
+                                                        }else{?>
+                                                         <?php foreach ($tampil_data_majikanfi as $row3) { ?>
+                                       
+
+                                          <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terpilih Majikan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terpilih"  placeholder='Select datepicker' type='text' value="<?php echo  $row3->tglterpilih;?>"/>
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                              <label class="control-label "> Bandara Tujuan</label>
+                                                              <div class="controls">
+                                                                  <input type="text" name="bandaratuju" class=" popovers" value="<?php echo  $row3->bandaratuju;?>" data-trigger="hover" data-content="" data-original-title="bandaratuju" />
+                                                              </div>
+                                                            </div>
+
+
+                                                          
+
+                                                        <!--     <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Simpan Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value=" <?php echo  $row3->simpansuhan;?>" name="simpansuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+ --><!-- 
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Kirim Suhan </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value=" <?php echo  $row3->kirimsuhan;?>" name="kirimsuhan"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div> -->
+
+                                                             <div class="control-group">
+                                                                <label class="control-label">Tanggal Terima SUhan</label>
+                                                                <div class="controls">
+                                                                    <select class="span6 " name="tglsimpansuhan" data-placeholder="Choose a Category" tabindex="1">
+                                                                            <option value="" />Select...
+                                                                            <?php  foreach ($option_suhan as $pilihan) { ?>
+                                                                        <option value="<?php echo $pilihan->tgl_terima;?>" /><?php echo $pilihan->tgl_terima;?>
+                                                                         <?php
+                                                                     } ?>
+                                                                        </select>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="control-group">
+                                                                <label class="control-label">Status Suhan</label>
+                                                                <div class="controls">
+
+                                                                    <select class="span6 " name="statsuhan" data-placeholder="Choose a Category" tabindex="1">
+                                                                            <option value="Asli" />Asli
+                                                                            <option value="Simpanan" />Simpanan
+                                                                        </select>
+                                                                </div>
+                                                            </div>
+
+                                                          
+                                                               <div class="control-group">
+                                                                <label class="control-label">Tanggal Terima Visapermit</label>
+                                                                <div class="controls">
+
+                                                                    <select class="span6 " name="tglsimpanvp" data-placeholder="Choose a Category" tabindex="1">
+                                                                            <option value="" />Select...
+                                                                            <?php  foreach ($option_vp as $pilihan) { ?>
+                                                                        <option value="<?php echo $pilihan->tgl_terima;?>" /><?php echo $pilihan->tgl_terima;?>
+                                                                         <?php
+                                                                     } ?>
+                                                                        </select>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="control-group">
+                                                                <label class="control-label"> Status Visapermit</label>
+                                                                <div class="controls">
+
+                                                                    <select class="span6 " name="statvp" data-placeholder="Choose a Category" tabindex="1">
+                                                                            <option value="Asli" />Asli
+                                                                            <option value="Simpanan" />Simpanan
+                                                                        </select>
+                                                                </div>
+                                                            </div>
+
+  <!-- <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Simpan Visapermit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value=" <?php echo  $row3->simpanvisapermit;?>" name="simpanvisapermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div> -->
+
+                                                          <!--    <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Kirim Visapermit </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value=" <?php echo  $row3->kirimvisapermit;?>" name="kirimvisapermit"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div> -->
+
+
+                                <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Terima PK </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' value="<?php echo  $row3->tglpk;?>" name="tglpk"  placeholder='Select datepicker' type='text' />
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+                                                          
+
+                                                            <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Dapat Job Deskripsi (JD) </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="jd"  placeholder='Select datepicker' type='text' value="<?php echo  $row3->JD;?>"/>
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="control-group" id="berlaku">
+                                                                <label class="control-label"> Tgl Diminta Terbang </label>
+                                                                <div class="controls">
+                                                                    <div class='datepicker input-append' id='datepicker'>
+                                                                      <input class='input-medium' data-format='yyyy.MM.dd' name="terbang"  placeholder='Select datepicker' type='text' value="<?php echo  $row3->tglterbang;?>"/>
+                                                                    <span class='add-on'>
+                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
+                                                                     </span>
+                                                                               </div>
+                                                                              <!--  <?php $tgla= $row->statustglterbang;
+                                                        if($tgla=='A'){
+                                                            ?>
+                                                                            <label class='radio '>
+                                                                            <input type='radio' name="terbanga" value='A' checked />
+                                                                            Actual
+                                                                        </label>
+                                                                        <label class='radio'>
+                                                                            <input type='radio' name="terbanga" value='C'  />
+                                                                            Calculation
+                                                                        </label>
+                                                             <?php
+                                                        }else{
+                                                            ?>
+                                                            <label class='radio '>
+                                                                            <input type='radio' name="terbanga" value='A'  />
+                                                                            Actual
+                                                                        </label>
+                                                                        <label class='radio'>
+                                                                            <input type='radio' name="terbanga" value='C'  checked/>
+                                                                            Calculation
+                                                                        </label>
+                                                             <?php
+                                                        }?> -->
+                                                                </div>
+                                                            </div>
+<?php }?>
+                                                          
+                                                            
+         <?php
+     }?>
+                </div>
+                <div class='modal-footer'>
+                    <button class='btn' data-dismiss='modal'>Close</button>
+                    <button class='btn btn-primary'>Save changes</button>
+                </div>
+            </div>
+
+
+
+ <div class="modal fade" id="modalku" role="dialog">
+    <div class="modal-dialog">
+        
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            <label for="satu"></label>
+            <input id="edodo" type="checkbox" name="sudahadapk"><label for="edodo">sudah ada pk</label> 
+          <input type="text" id="satu" class="form-control" name="tglpkketaiwan" placeholder="INPUTKAN TANGGAL PK">
+        </div>
+        <div class="modal-footer">
+          <input type="button" onclick="simpanpk('<?= $detailpersonalid; ?>')" class="btn btn-primary pkpk" value="Simpan">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+ <div class="modal fade" id="apendik" role="dialog">
+    <div class="modal-dialog">
+        
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Print Apendik</h4>
+        </div>
+        <div class="modal-body text-center">
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/a/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>Apendik A</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/b/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>Apendik B</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/c/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>Apendik C</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/d/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>Apendik D</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/b10/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>B10</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/b10.2/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>B10.2</div>
+                </a>
+            </div>
+
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C6/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C6</div>
+                </a>
+            </div>
+
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C7/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C7</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C8/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C8</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C9/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C9</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C10/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C10</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C11/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C11</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C12/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C12</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C13/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C13</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C14/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C14</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C15/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C15</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C16/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C16</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/C17/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>C17</div>
+                </a>
+            </div>
+            <div class=' box-quick-link blue-background inline-block'>
+                <a target='_blank' href="<?= site_url(); ?>/apendik/apendik_a/amplopabc/<?= $detailpersonalid; ?>" class="apendik">
+                    <div class='header'>
+                        <div class='icon-book'></div>
+                    </div>
+                    <div class='content'>amplopabc</div>
+                </a>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+                      
+<script type="text/javascript">
+
+
+
+$("input[name='sudahadapk']").change(function(){
+    if ($(this).is(":checked")) {
+        $.ajax({
+            url: "<?= site_url(); ?>/detailmajikan/stauspkpk/1/<?= $detailpersonalid; ?>",
+            success:function(response){
+                alert(response);
+            }
+        })
+    }else{
+        $.ajax({
+            url: "<?= site_url(); ?>/detailmajikan/stauspkpk/0/<?= $detailpersonalid; ?>",
+            success:function(response){
+                alert(response);
+            }
+        })
+    }
+})
+
+
+$(".apendik").click(function(){
+    $("#apendik").modal("show");
+})
+
+
+function tglpkketaiwan(key){
+    $("#modalku").modal("show");
+    $.ajax({
+        url: "<?= site_url(); ?>/detailmajikan/ambilpkketaiwan/"+key,
+        success:function(response){
+            if (response != 'undefined') {
+                $(".pkpk").attr("value", "Update");
+                var nilai = response.replace(/~/g, " ");
+                $("input[name='tglpkketaiwan']").val(nilai);
+            }
+        }
+    });
+
+    $.ajax({
+        url: "<?= site_url(); ?>/detailmajikan/ambilstatuspk/"+key,
+        success:function(response){
+            if (response == 1) {
+                $("input[name='sudahadapk']").attr("checked", "checked");
+            }
+        }
+    });
+}
+
+function simpanpk(){
+    var id = "<?= $detailpersonalid; ?>";
+    var pk = $("input[name='tglpkketaiwan']").val();
+    var pkkirim = pk.replace(/ /g, "~");
+    $.ajax({
+        url: "<?= site_url(); ?>/detailmajikan/simpanpkketaiwan/"+id+"/"+pkkirim,
+        success:function(response){
+            alert(response);
+        }
+    });
+}
+
+$("#group").change(function(){
+    var a = $("#group").val();
+    $.ajax({
+        url: "<?= site_url("detailmajikan/ambildataagen/"); ?>",
+        method: "POST",
+        dataType: "text",
+        data: {
+            key: "groupkey",
+            dataidagen: a
+        },success:function(response){
+            $("#kodeagen").html(response);
+        }
+    });
+});
+
+$("#kodeagen").change(function(){
+    var a = $("#kodeagen").val();
+    $.ajax({
+        url: "<?= site_url("detailmajikan/ambildatamajikan/"); ?>",
+        method: "POST",
+        dataType: "text",
+        data: {
+            key: "groupkey",
+            dataidagen: a
+        },success:function(response){
+            $("#kode_majikan").html(response);
+        }
+    });
+});
+
+$("#kode_majikan").change(function(){
+    var a = $("#kode_majikan").val();
+    $.ajax({
+        url: "<?= site_url("detailmajikan/ambilsuhanid/"); ?>",
+        method: "POST",
+        dataType: "text",
+        data: {
+            key: "groupkey",
+            dataidagen: a
+        },success:function(response){
+            $("#id_suhan").html(response);
+        }
+    });
+});
+
+$("#id_suhan").change(function(){
+    var a = $("#id_suhan").val();
+    $.ajax({
+        url: "<?= site_url("detailmajikan/ambilvisapermit/"); ?>",
+        method: "POST",
+        dataType: "text",
+        data: {
+            key: "groupkey",
+            dataidagen: a
+        },success:function(response){
+            $("#id_visapermit").html(response);
+        }
+    });
+});
+
+</script>ss:function(response){
+            $("#id_visapermit").html(response);
+        }
+    });
+});
+
+</script>

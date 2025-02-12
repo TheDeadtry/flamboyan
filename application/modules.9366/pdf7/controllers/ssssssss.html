@@ -1,0 +1,70 @@
+ <div class='modal hide fade' id='editpekerjaan<?php echo $no; ?>' role='dialog' tabindex='-1'>
+                <div class='modal-header'>
+                    <button class='close' data-dismiss='modal' type='button'>&times;</button>
+                    <h3>UPDATE PEKERJAAN</h3>
+                </div>  
+                <form class="form-horizontal" method="post" action="<?php echo site_url('pekerjaan/update_pekerjaan'); ?>">
+                           <div class="modal-body">
+                           
+                          <input type="hidden" class="form-control" name="id_pekerjaan" value="<?php echo $row2->id_pekerjaan; ?>">
+ <div class="control-group">
+                                                                <label class="control-label">Kategori </label>
+                                                                <div class="controls">
+                                                                    <select name="kategori" class="span11 " data-placeholder="Choose a Category" tabindex="1">
+                                                                        <option value="<?php echo $row2->id_kategori; ?>" /><?php echo $row2->kategorinya; ?>
+                                                 <?php  foreach ($tampil_data_kategori_pekerjaan as $pilihan) { ?>
+                                                                        <option value="<?php echo $pilihan->id_kategori;?>" /><?php echo $pilihan->isi;?>
+                                                                         <?php
+                                                                     } ?>
+                                                                        </select>
+                                                                </div>
+                                                            </div>
+                                                                
+                                    <div class="control-group">
+                                                            <label class="control-label">Nama Jenis Usaha</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="nama_pekerjaan" class="span11 popovers" data-trigger="hover" data-content="Isi sesuai nama misal : Male Formal, Female Formal" data-original-title="Nama Sektor" value="<?php echo $row2->isi; ?>"/>
+                                                            </div>
+                                                            </div>
+                                    <div class="control-group">
+                                                            <label class="control-label">Jenis Usaha (Bahasa Taiwan)</label>
+                                                            <div class="controls">
+                                                                <input type="text" name="nama_pekerjaan_taiwan" class="span11 popovers" data-trigger="hover" data-content="Isi sesuai nama misal : Male Formal, Female Formal Dalam Bahasa Taiwan" data-original-title="Nama Sektor (Bahsa Taiwan)" value="<?php echo $row2->mandarin; ?>"/>
+                                                            </div>
+                                                            </div>      
+                             
+                           </div>
+                           <div class="modal-footer">
+                             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                           </div>
+                           </form>
+                         </div>
+
+
+
+                       </div>
+                     </div>
+
+
+ <div class="modal fade" id="hapuspekerjaan<?php echo $no; ?>" tabindex="-2" role="dialog">
+                       <div class="modal-dialog">
+                         <div class="modal-content">
+                           <form class="form-horizontal" method="post" action="<?php echo site_url('pekerjaan/hapus_pekerjaan'); ?>">
+                           <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                             <h4 class="modal-title">Hapus Data Pekerjaan</h4>
+                           </div>
+                           <div class="modal-body">
+                             <input type="hidden" class="form-control" name="id_pekerjaan" value="<?php echo $row2->id_pekerjaan; ?>">
+                              <p>Apakah anda yakin akan menghapus data Pekerjaan ini? : <?php echo $row2->isi; ?></p>
+                           </div>
+                           <div class="modal-footer">
+                             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                           </div>
+                           </form>
+                         </div>
+                       </div>
+                     </div>
+

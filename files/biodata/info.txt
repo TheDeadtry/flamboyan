@@ -1,0 +1,4 @@
+// daftar template
+los - template Letter of State
+lospk - template Letter of State LPK
+hm - template Biodata Formal
